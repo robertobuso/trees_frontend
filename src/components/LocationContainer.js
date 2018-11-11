@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TreesContainer from './TreesContainer'
 import { Container, Header } from 'semantic-ui-react'
 
 class LocationContainer extends Component {
@@ -8,14 +9,13 @@ class LocationContainer extends Component {
     zip: '',
     region: '',
     lat: '',
-    lon: '',
-    trees: []
+    lon: ''
   }
 
   componentDidMount() {
-    fetch('https://data.cityofnewyork.us/resource/nwxe-4ae8.json')
+    fetch('http://ip-api.com/json')
     .then(r => r.json())
-    .then(r => this.setTrees(r))
+    .then(r => console.log('NEW LOCATION', r))
   }
 
   handleLocation = (info) => {
@@ -28,25 +28,21 @@ class LocationContainer extends Component {
     })
   }
 
-  setTrees = (trees) => {
-    console.log("TREES", trees)
-    this.setState({
-      trees: trees
-    })
-  }
-
   render() {
-
     return (
+      <div>
       <Container text>
         <Header as='h2'> Locating You </Header>
           <p>
-          We have {this.state.trees.length} trees!
+          LOCATION
           <br/><br/>
-          The first tree's common name is {this.state.trees[0] ? this.state.trees[0]['spc_common'] : null}.
+          LOCATION TWO
           <br/><br/>
           </p>
       </Container>
+      <br/>
+      <TreesContainer />
+       </div>
     )
   }
 }
