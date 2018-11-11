@@ -8,13 +8,14 @@ class LocationContainer extends Component {
     zip: '',
     region: '',
     lat: '',
-    lon: ''
+    lon: '',
+    trees: []
   }
 
   componentDidMount() {
-    fetch('http://ip-api.com/json')
+    fetch('https://data.cityofnewyork.us/resource/nwxe-4ae8.json')
     .then(r => r.json())
-    .then(r => this.handleLocation(r))
+    .then(r => this.setTrees(r))
   }
 
   handleLocation = (info) => {
@@ -27,16 +28,23 @@ class LocationContainer extends Component {
     })
   }
 
+  setTrees = (trees) => {
+    console.log("TREES", trees)
+    this.setState({
+      trees: trees
+    })
+  }
+
   render() {
+
     return (
       <Container text>
         <Header as='h2'> Locating You </Header>
           <p>
-          You live in {this.state.city} in the region of {this.state.region}.
+          We have {this.state.trees.length} trees!
           <br/><br/>
-          And your zip code is {this.state.zip}.
+          The first tree's common name is {this.state.trees[0] ? this.state.trees[0]['spc_common'] : null}.
           <br/><br/>
-          Essential to the app will be the fact that your longitude is {this.state.lon} and your latitude is {this.state.lat}.
           </p>
       </Container>
     )
