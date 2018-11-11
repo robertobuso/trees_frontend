@@ -5,9 +5,6 @@ import { Container, Header } from 'semantic-ui-react'
 class LocationContainer extends Component {
 
   state = {
-    city: '',
-    zip: '',
-    region: '',
     lat: 0,
     lon: 0
   }
@@ -26,19 +23,8 @@ class LocationContainer extends Component {
   }
 
   showPosition = (position) => {
-    console.log('POSITION: ', position)
       this.setState({  lat: position.coords.latitude, lon: position.coords.longitude
       })
-  }
-
-  handleLocation = (info) => {
-   this.setState({
-      city: info.city,
-      zip: info.zip,
-      region: info.region,
-      lat: info.lat,
-      lon: info.lon
-    })
   }
 
   render() {

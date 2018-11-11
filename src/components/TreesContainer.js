@@ -8,13 +8,12 @@ class TreesContainer extends Component {
     image_url: ''
   }
   componentDidMount() {
-    fetch('https://data.cityofnewyork.us/resource/nwxe-4ae8.json')
+    fetch('https://data.cityofnewyork.us/resource/nwxe-4ae8.json?$where=latitude >= 40.72309177 AND latitude < 40.7231 AND longitude > -73.9970284 AND longitude < -73.99')
     .then(r => r.json())
-    .then(r => this.setTrees(r))
+    .then(r => console.log(r))
   }
 
   setTrees = (trees) => {
-    console.log("TREES", trees)
     this.setState({
       trees: trees
     })
@@ -40,7 +39,7 @@ class TreesContainer extends Component {
           <p>
           We have {this.state.trees.length} trees!
           <br/><br/>
-          The first tree's common name is {this.state.trees[0] ? this.state.trees[0]['spc_common'] : null}.
+          The third tree's common name is {this.state.trees[2] ? this.state.trees[2]['spc_common'] : null}.
           <br/><br/>
           </p>
       </Container>
