@@ -21,7 +21,7 @@ class TreesContainer extends Component {
   }
 
   findImage = () => {
-    fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAAHq2KOz6_q4Ol-A2hfF88oLMqnf7DRXY&cx=008113235877743409861:zua0x3ncdjw&q=red+maple')
+    fetch()
     .then(r => r.json())
     .then(r => this.setImage(r))
   }

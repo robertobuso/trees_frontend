@@ -12,9 +12,14 @@ class LocationContainer extends Component {
     lon: 0
   }
 
+  componentDidMount() {
+    this.getLocation()
+  }
+
  getLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition());
+   const geolocation = navigator.geolocation
+      if (geolocation) {
+        geolocation.getCurrentPosition((position) => this.showPosition(position))
       } else {
           alert("Geolocation is not supported by this browser.")
       }
@@ -54,5 +59,7 @@ class LocationContainer extends Component {
     )
   }
 }
+
+
 
 export default LocationContainer;
