@@ -8,14 +8,22 @@ class LocationContainer extends Component {
     city: '',
     zip: '',
     region: '',
-    lat: '',
-    lon: ''
+    lat: 0,
+    lon: 0
   }
 
-  componentDidMount() {
-    fetch('http://ip-api.com/json')
-    .then(r => r.json())
-    .then(r => console.log('NEW LOCATION', r))
+ getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition());
+      } else {
+          alert("Geolocation is not supported by this browser.")
+      }
+  }
+
+  showPosition = (position) => {
+    console.log('POSITION: ', position)
+      this.setState({  lat: position.coords.latitude, lon: position.coords.longitude
+      })
   }
 
   handleLocation = (info) => {
@@ -34,9 +42,9 @@ class LocationContainer extends Component {
       <Container text>
         <Header as='h2'> Locating You </Header>
           <p>
-          LOCATION
+          Your latitude is {this.state.lat}
           <br/><br/>
-          LOCATION TWO
+          And your longitude is {this.state.lon}
           <br/><br/>
           </p>
       </Container>
