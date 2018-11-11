@@ -23,7 +23,7 @@ class LocationContainer extends Component {
       zip: info.zip,
       region: info.region,
       lat: info.lat,
-      long: info.lon
+      lon: info.lon
     })
   }
 
@@ -35,6 +35,8 @@ class LocationContainer extends Component {
           You live in {this.state.city} in the region of {this.state.region}.
           <br/><br/>
           And your zip code is {this.state.zip}.
+          <br/><br/>
+          Essential to the app will be the fact that your longitude is {this.state.lon} and your latitude is {this.state.lat}.
           </p>
       </Container>
     )
