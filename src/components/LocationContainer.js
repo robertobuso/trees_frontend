@@ -18,7 +18,6 @@ class LocationContainer extends Component {
  getLocation = () => {
    const geolocation = navigator.geolocation
       if (geolocation) {
-        console.log('INSIDE GEOLOCATION')
          geolocation.getCurrentPosition((position) => this.showPosition(position))
       } else {
           alert("Geolocation is not supported by this browser.")
@@ -26,7 +25,6 @@ class LocationContainer extends Component {
   }
 
    showPosition = (position) => {
-    console.log('INSIDE SHOWPOSITION')
       this.setState({  lat: position.coords.latitude, lon: position.coords.longitude
       }, () => {
         findTrees(this.state.lat, this.state.lon)
@@ -35,17 +33,14 @@ class LocationContainer extends Component {
   }
 
   setTrees = (trees) => {
-    console.log('INSIDE setTREES')
     this.setState({
       trees: trees
     })
   }
 
   render() {
-    console.log(this.state)
     return (
-
-        <div>
+      <div>
       <Container text>
         <Header as='h2'> Locating You </Header>
           <p>
