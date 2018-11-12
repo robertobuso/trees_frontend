@@ -30,11 +30,11 @@ class TreesContainer extends Component {
           <br/><br/>
           The second tree's common name is {this.props.trees[1] ? this.props.trees[1]['spc_common'] : null}.
           </p>
-          <br/><br/>
           The trees are in the following addresses:
           {this.props.trees.map(tree =>
             <Tree tree={tree} />
           )}
+
       </Container>
        <Image src={this.state.image_url} size='small' />
        </div>

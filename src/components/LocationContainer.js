@@ -61,7 +61,7 @@ class LocationContainer extends Component {
         lon={this.state.lon}
         trees={this.state.trees}/>
          </div>
-      
+
     )
   }
 }
