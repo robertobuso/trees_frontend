@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TreesContainer from './TreesContainer'
-import {findTrees} from '../adapters/index.js'
+import {findTrees, findImage} from '../adapters/index.js'
 import { Container, Header } from 'semantic-ui-react'
 
 class LocationContainer extends Component {
@@ -13,6 +13,7 @@ class LocationContainer extends Component {
 
   componentDidMount() {
     this.getLocation()
+    findImage()
   }
 
  getLocation = () => {

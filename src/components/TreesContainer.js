@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Image } from 'semantic-ui-react'
 import Tree from './Tree'
+import {findImage} from '../adapters/index.js'
 
 class TreesContainer extends Component {
 
@@ -8,15 +9,14 @@ class TreesContainer extends Component {
     image_url: ''
   }
 
-  findImage = () => {
-    fetch()
-    .then(r => r.json())
-    .then(r => this.setImage(r))
+  componentDidMount() {
+    findImage()
+    .then(r => this.setImage(r), () => console.log('IMAGE: ', this.state.image_url))
   }
 
     setImage = (image) => {
       this.setState({
-        image_url: image.items[0].pagemap.cse_image[0]['src']
+        image_url: image
       })
     }
 
@@ -36,7 +36,9 @@ class TreesContainer extends Component {
           )}
 
       </Container>
-       <Image src={this.state.image_url} size='small' />
+      {this.state.image_url.query ?
+       <Image src={this.state.image_url.query.pages['-1']['imageinfo'][0]['thumburl']} />
+       : null}
        </div>
     )
   }

@@ -7,3 +7,8 @@ export const findTrees = (lat, lon) => {
     .then(r => r.json())
   }
 }
+
+export const findImage = () => {
+    return  fetch('https://en.wikipedia.org/w/api.php?action=query&origin=*&titles=File:Albert%20Einstein%20Head.jpg&prop=imageinfo&&iiprop=url&iiurlwidth=220&format=json')
+    .then(r => r.json())
+}
