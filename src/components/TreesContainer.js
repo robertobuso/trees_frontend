@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Image } from 'semantic-ui-react'
+import Tree from './Tree'
 
 class TreesContainer extends Component {
 
@@ -28,8 +29,12 @@ class TreesContainer extends Component {
           We have {this.props.trees.length} trees!
           <br/><br/>
           The second tree's common name is {this.props.trees[1] ? this.props.trees[1]['spc_common'] : null}.
-          <br/><br/>
           </p>
+          <br/><br/>
+          The trees are in the following addresses:
+          {this.props.trees.map(tree =>
+            <Tree tree={tree} />
+          )}
       </Container>
        <Image src={this.state.image_url} size='small' />
        </div>
