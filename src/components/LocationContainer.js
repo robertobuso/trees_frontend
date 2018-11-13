@@ -27,7 +27,7 @@ class LocationContainer extends Component {
   }
 
    showPosition = (position) => {
-      this.setState({  lat: position.coords.latitude, lon: position.coords.longitude
+      this.setState({ lat: position.coords.latitude, lon: position.coords.longitude
       }, () => {
         findTrees(this.state.lat, this.state.lon)
         .then(trees => this.setTrees(trees))
@@ -54,7 +54,7 @@ class LocationContainer extends Component {
           lat={this.state.lat}
           lon={this.state.lon}
           trees={this.state.trees}
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDhkn9ea3jg99u1BZqNrroIQ72C9c44HeM&v=3.exp&libraries=geometry,drawing,places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&v=3.exp&libraries=geometry,drawing,places`}
 				  loadingElement={<div style={{ height: `100%` }} />}
 				  containerElement={<div style={{ height: `600px`, width: `525px` }} />}
 				  mapElement={<div style={{ height: `90%` }} />}/>
