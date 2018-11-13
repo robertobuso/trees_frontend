@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header } from 'semantic-ui-react'
+import { Container, Header, Card } from 'semantic-ui-react'
 import Tree from './Tree'
 
 class TreesContainer extends Component {
@@ -18,9 +18,9 @@ class TreesContainer extends Component {
           </p>
           The trees are in the following addresses:
           {this.props.trees.map(tree =>
-            <Tree
-              tree={tree}
-              key={tree.tree_id}/>
+              <Tree
+                tree={tree}
+                key={tree.tree_id}/>
           )}
 
       </Container>

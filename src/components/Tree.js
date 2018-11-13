@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Image } from 'semantic-ui-react'
+import { Image, Card, Icon } from 'semantic-ui-react'
 import {findImage} from '../adapters/index.js'
 
 class Tree extends Component {
@@ -25,12 +25,22 @@ class Tree extends Component {
   render() {
 
     return(
-      <Container textalign='center'>
-        {this.props.tree.address}
-        {this.state.image_url ?
-         <Image src={this.state.image_url} />
-         : null}
-      </Container>
+        <Card>
+          {this.state.image_url ?
+           <Image src={this.state.image_url} />
+           : null}
+           <Card.Content>
+     <Card.Header>{this.props.tree.spc_common}</Card.Header>
+     <Card.Meta>{this.props.tree.spc_latin}</Card.Meta>
+     <Card.Description>{this.props.tree.address}</Card.Description>
+   </Card.Content>
+   <Card.Content extra>
+     <a>
+       <Icon name='heart' />
+       Tree Health: {this.props.tree.health}
+     </a>
+     </Card.Content>
+        </Card>
     )
   }
 }
