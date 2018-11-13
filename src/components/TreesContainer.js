@@ -1,24 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Header, Image } from 'semantic-ui-react'
+import { Container, Header } from 'semantic-ui-react'
 import Tree from './Tree'
-import {findImage} from '../adapters/index.js'
 
 class TreesContainer extends Component {
 
-  state = {
-    image_url: ''
-  }
 
-  componentDidMount() {
-    findImage()
-    .then(r => this.setImage(r), () => console.log('IMAGE: ', this.state.image_url))
-  }
-
-    setImage = (image) => {
-      this.setState({
-        image_url: image
-      })
-    }
 
   render() {
     return (
@@ -32,13 +18,13 @@ class TreesContainer extends Component {
           </p>
           The trees are in the following addresses:
           {this.props.trees.map(tree =>
-            <Tree tree={tree} />
+            <Tree
+              tree={tree}
+              key={tree.tree_id}/>
           )}
 
       </Container>
-      {this.state.image_url.query ?
-       <Image src={this.state.image_url.query.pages['-1']['imageinfo'][0]['thumburl']} />
-       : null}
+
        </div>
     )
   }

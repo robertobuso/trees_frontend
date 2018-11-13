@@ -8,7 +8,8 @@ export const findTrees = (lat, lon) => {
   }
 }
 
-export const findImage = () => {
-    return  fetch('https://en.wikipedia.org/w/api.php?action=query&origin=*&titles=File:Albert%20Einstein%20Head.jpg&prop=imageinfo&&iiprop=url&iiurlwidth=220&format=json')
+export const findImage = (query) => {
+  console.log('Query in findImage', query)
+    return  fetch(`https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=${query}&gpslimit=1`)
     .then(r => r.json())
 }
