@@ -22,6 +22,11 @@ class Tree extends Component {
     }
   }
 
+  capitalize(string) {
+    const stringArr = string.split(' ')
+    return stringArr.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+  }
+
   render() {
 
     return(
@@ -30,8 +35,9 @@ class Tree extends Component {
            <Image src={this.state.image_url} />
            : null}
            <Card.Content>
-     <Card.Header>{this.props.tree.spc_common}</Card.Header>
-     <Card.Meta>{this.props.tree.spc_latin}</Card.Meta>
+
+     <Card.Header>{this.capitalize(this.props.tree.spc_common)}</Card.Header>
+     <Card.Meta>{this.capitalize(this.props.tree.spc_latin)}</Card.Meta>
      <Card.Description>{this.props.tree.address}</Card.Description>
    </Card.Content>
    <Card.Content extra>
