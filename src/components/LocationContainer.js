@@ -49,6 +49,7 @@ class LocationContainer extends Component {
       <br/>
       <Grid columns={2} >
       <Grid.Column floated='left'>
+      <br/><br/><br/>
         <MapContainer
           lat={this.state.lat}
           lon={this.state.lon}
@@ -56,7 +57,7 @@ class LocationContainer extends Component {
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDhkn9ea3jg99u1BZqNrroIQ72C9c44HeM&v=3.exp&libraries=geometry,drawing,places`}
 				  loadingElement={<div style={{ height: `100%` }} />}
 				  containerElement={<div style={{ height: `600px`, width: `525px` }} />}
-				  mapElement={<div style={{ height: `100%` }} />}/>
+				  mapElement={<div style={{ height: `90%` }} />}/>
       </Grid.Column>
       <Grid.Column floated='right'>
         <TreesContainer
