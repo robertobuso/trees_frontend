@@ -44,11 +44,7 @@ class LocationContainer extends Component {
     return (
       <div>
       <Container text>
-        <Header as='h2'> Studying Trees Near You </Header>
-          <p>
-          Your latitude is {this.state.lat}. And your longitude is {this.state.lon}
-          <br/>
-          </p>
+        <Header as='h1'> A Tree Grows In... </Header>
       </Container>
       <br/>
       <Grid columns={2} >
@@ -58,9 +54,9 @@ class LocationContainer extends Component {
           lon={this.state.lon}
           trees={this.state.trees}
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDhkn9ea3jg99u1BZqNrroIQ72C9c44HeM&v=3.exp&libraries=geometry,drawing,places`}
-				loadingElement={<div style={{ height: `100%` }} />}
-				containerElement={<div style={{ height: `600px`, width: `525px` }} />}
-				mapElement={<div style={{ height: `100%` }} />}/>
+				  loadingElement={<div style={{ height: `100%` }} />}
+				  containerElement={<div style={{ height: `600px`, width: `525px` }} />}
+				  mapElement={<div style={{ height: `100%` }} />}/>
       </Grid.Column>
       <Grid.Column floated='right'>
         <TreesContainer

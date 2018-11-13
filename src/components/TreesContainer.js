@@ -8,7 +8,7 @@ class TreesContainer extends Component {
     return (
       <div>
       <Container text>
-        <Header as='h2'> There are {this.props.trees.length} trees near your block! </Header>
+        <Header as='h3'> There are {this.props.trees.length} trees near your block! </Header>
       </Container>
       <br/><br/>
 
