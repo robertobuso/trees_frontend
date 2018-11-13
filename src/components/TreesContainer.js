@@ -4,6 +4,7 @@ import Tree from './Tree'
 
 class TreesContainer extends Component {
 
+
   render() {
     return (
       <div>
@@ -13,7 +14,7 @@ class TreesContainer extends Component {
       <br/><br/>
 
       <Grid columns={2} style={{overflow: 'auto', maxHeight: 550, padding: 10}} >
-        <Grid.Column floated='centered'>
+        <Grid.Column floated='left'>
         <Label as='a' color='red' ribbon='right' floating>
           Scroll Down
         </Label>
@@ -21,7 +22,8 @@ class TreesContainer extends Component {
         {this.props.trees.map(tree =>
             <Tree
               tree={tree}
-              key={tree.tree_id}/>
+              key={tree.tree_id}
+              handleCardClick={this.props.handleCardClick}/>
         )}
         </Card.Group>
         </Grid.Column>

@@ -9,7 +9,6 @@ class Tree extends Component {
   }
 
   componentDidMount() {
-    // console.log('TREE', this.props.tree.spc_common)
     findImage(this.props.tree.spc_common)
     .then(image => this.setImage(image))
   }
@@ -18,7 +17,7 @@ class Tree extends Component {
     if (image.query.pages[0]['thumbnail']) {
     this.setState({
       image_url: image.query.pages[0]['thumbnail']['source']
-    }, () => console.log('Query in state is: ', this.state.image_url))
+    })
     }
   }
 
@@ -32,13 +31,16 @@ class Tree extends Component {
       }
     }
     catch(error) {
-      console.error('Error': error);
+      console.error('Error', error);
     }
   }
 
   render() {
+  
     return(
-      <Card centered key={this.props.tree.tree_id}>
+      <Card centered
+        key={this.props.tree.tree_id}
+        onClick={() => this.props.handleCardClick(this.props.tree.latitude, this.props.tree.longitude)}>
         {this.state.image_url ?
          <Image src={this.state.image_url} size='medium' />
          : null}

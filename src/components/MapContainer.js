@@ -1,5 +1,5 @@
 import React from "react";
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 const MapContainer = withScriptjs(withGoogleMap((props) =>{
 
@@ -11,9 +11,12 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
 
   return (
       <GoogleMap
-        defaultZoom={14}
+        defaultZoom={17}
         center={ { lat: props.lat, lng: props.lon} }
         >
+        <Marker
+        position={ {lat: Number(props.markerLat), lng: Number(props.markerLon)} }
+      />
       </GoogleMap>
     );
   }

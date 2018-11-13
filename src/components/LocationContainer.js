@@ -3,13 +3,17 @@ import TreesContainer from './TreesContainer'
 import MapContainer from './MapContainer'
 import {findTrees, findImage} from '../adapters/index.js'
 import { Container, Header, Grid } from 'semantic-ui-react'
+require('dotenv').config()
+
 
 class LocationContainer extends Component {
 
   state = {
     lat: 0,
     lon: 0,
-    trees: []
+    trees: [],
+    markerLat: 0,
+    markerLon: 0
   }
 
   componentDidMount() {
@@ -40,7 +44,15 @@ class LocationContainer extends Component {
     })
   }
 
+  handleCardClick = (lat, lon) => {
+    this.setState({
+      markerLat: lat,
+      markerLon: lon
+    })
+  }
+
   render() {
+    console.log(Number(this.state.markerLon))
     return (
       <div>
       <Container text>
@@ -53,8 +65,10 @@ class LocationContainer extends Component {
         <MapContainer
           lat={this.state.lat}
           lon={this.state.lon}
+          markerLat={this.state.markerLat}
+          markerLon={this.state.markerLon}
           trees={this.state.trees}
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&v=3.exp&libraries=geometry,drawing,places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=process.env.GOOGLE_API&v=3.exp&libraries=geometry,drawing,places`}
 				  loadingElement={<div style={{ height: `100%` }} />}
 				  containerElement={<div style={{ height: `600px`, width: `525px` }} />}
 				  mapElement={<div style={{ height: `90%` }} />}/>
@@ -63,14 +77,13 @@ class LocationContainer extends Component {
         <TreesContainer
           lat={this.state.lat}
           lon={this.state.lon}
-          trees={this.state.trees}/>
+          trees={this.state.trees}
+          handleCardClick={this.handleCardClick}/>
       </Grid.Column>
       </Grid>
     </div>
     )
   }
 }
-
-
 
 export default LocationContainer;
