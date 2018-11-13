@@ -45,10 +45,8 @@ class LocationContainer extends Component {
       <Container text>
         <Header as='h2'> Studying Trees Near You </Header>
           <p>
-          Your latitude is {this.state.lat}
-          <br/><br/>
-          And your longitude is {this.state.lon}
-          <br/><br/>
+          Your latitude is {this.state.lat}. And your longitude is {this.state.lon}
+          <br/>
           </p>
       </Container>
       <br/>

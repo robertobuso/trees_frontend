@@ -26,9 +26,6 @@ class TreesContainer extends Component {
         </Card.Group>
         </Grid.Column>
       </Grid>
-
-
-
        </div>
     )
   }
