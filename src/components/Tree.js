@@ -38,7 +38,7 @@ class Tree extends Component {
 
   render() {
     return(
-      <Card centered>
+      <Card centered key={this.props.tree.tree_id}>
         {this.state.image_url ?
          <Image src={this.state.image_url} size='medium' />
          : null}

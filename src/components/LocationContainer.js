@@ -43,7 +43,7 @@ class LocationContainer extends Component {
     return (
       <div>
       <Container text>
-        <Header as='h2'> Locating You </Header>
+        <Header as='h2'> Studying Trees Near You </Header>
           <p>
           Your latitude is {this.state.lat}
           <br/><br/>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Grid, Card } from 'semantic-ui-react'
+import { Container, Header, Grid, Card, Label } from 'semantic-ui-react'
 import Tree from './Tree'
 
 class TreesContainer extends Component {
@@ -8,15 +8,15 @@ class TreesContainer extends Component {
     return (
       <div>
       <Container text>
-        <Header as='h2'> Trees! </Header>
-          <p>
-          We have {this.props.trees.length} trees!
-          <br/><br/>
-          The second tree's common name is {this.props.trees[1] ? this.props.trees[1]['spc_common'] : null}.
-          </p>
+        <Header as='h2'> There are {this.props.trees.length} trees near your block! </Header>
       </Container>
       <br/><br/>
-      <Grid columns={3}>
+
+      <Grid columns={2} style={{overflow: 'auto', maxHeight: 550, padding: 10}} >
+        <Grid.Column floated='right'>
+        <Label as='a' color='red' ribbon='right' floating>
+          Scroll Down
+        </Label>
         <Card.Group>
         {this.props.trees.map(tree =>
             <Tree
@@ -24,6 +24,7 @@ class TreesContainer extends Component {
               key={tree.tree_id}/>
         )}
         </Card.Group>
+        </Grid.Column>
       </Grid>
 
 
