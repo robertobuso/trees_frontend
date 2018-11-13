@@ -13,7 +13,7 @@ class TreesContainer extends Component {
       <br/><br/>
 
       <Grid columns={2} style={{overflow: 'auto', maxHeight: 550, padding: 10}} >
-        <Grid.Column floated='right'>
+        <Grid.Column floated='centered'>
         <Label as='a' color='red' ribbon='right' floating>
           Scroll Down
         </Label>

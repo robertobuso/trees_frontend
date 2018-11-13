@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import TreesContainer from './TreesContainer'
+import MapContainer from './MapContainer'
 import {findTrees, findImage} from '../adapters/index.js'
-import { Container, Header } from 'semantic-ui-react'
+import { Container, Header, Grid } from 'semantic-ui-react'
 
 class LocationContainer extends Component {
 
@@ -50,12 +51,25 @@ class LocationContainer extends Component {
           </p>
       </Container>
       <br/>
-      <TreesContainer
-        lat={this.state.lat}
-        lon={this.state.lon}
-        trees={this.state.trees}/>
-         </div>
-
+      <Grid columns={2} >
+      <Grid.Column floated='left'>
+        <MapContainer
+          lat={this.state.lat}
+          lon={this.state.lon}
+          trees={this.state.trees}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDhkn9ea3jg99u1BZqNrroIQ72C9c44HeM&v=3.exp&libraries=geometry,drawing,places`}
+				loadingElement={<div style={{ height: `100%` }} />}
+				containerElement={<div style={{ height: `600px`, width: `525px` }} />}
+				mapElement={<div style={{ height: `100%` }} />}/>
+      </Grid.Column>
+      <Grid.Column floated='right'>
+        <TreesContainer
+          lat={this.state.lat}
+          lon={this.state.lon}
+          trees={this.state.trees}/>
+      </Grid.Column>
+      </Grid>
+    </div>
     )
   }
 }
