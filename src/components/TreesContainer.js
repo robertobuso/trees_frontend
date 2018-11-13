@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Header, Card } from 'semantic-ui-react'
+import { Container, Header, Grid, Card } from 'semantic-ui-react'
 import Tree from './Tree'
 
 class TreesContainer extends Component {
-
-
 
   render() {
     return (
@@ -16,14 +14,19 @@ class TreesContainer extends Component {
           <br/><br/>
           The second tree's common name is {this.props.trees[1] ? this.props.trees[1]['spc_common'] : null}.
           </p>
-          The trees are in the following addresses:
-          {this.props.trees.map(tree =>
-              <Tree
-                tree={tree}
-                key={tree.tree_id}/>
-          )}
-
       </Container>
+      <br/><br/>
+      <Grid columns={3}>
+        <Card.Group>
+        {this.props.trees.map(tree =>
+            <Tree
+              tree={tree}
+              key={tree.tree_id}/>
+        )}
+        </Card.Group>
+      </Grid>
+
+
 
        </div>
     )

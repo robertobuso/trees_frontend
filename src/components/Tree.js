@@ -23,30 +23,43 @@ class Tree extends Component {
   }
 
   capitalize(string) {
-    const stringArr = string.split(' ')
-    return stringArr.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+    try {
+      if (string.indexOf(' ') !== -1) {
+        const stringArr = string.split(' ')
+        return stringArr.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+      } else {
+          return string.charAt(0).toUpperCase() + string.slice(1)
+      }
+    }
+    catch(error) {
+      console.error('Error': error);
+    }
   }
 
   render() {
-
     return(
-        <Card>
-          {this.state.image_url ?
-           <Image src={this.state.image_url} />
-           : null}
-           <Card.Content>
-
-     <Card.Header>{this.capitalize(this.props.tree.spc_common)}</Card.Header>
-     <Card.Meta>{this.capitalize(this.props.tree.spc_latin)}</Card.Meta>
-     <Card.Description>{this.props.tree.address}</Card.Description>
-   </Card.Content>
-   <Card.Content extra>
-     <a>
-       <Icon name='heart' />
-       Tree Health: {this.props.tree.health}
-     </a>
-     </Card.Content>
-        </Card>
+      <Card centered>
+        {this.state.image_url ?
+         <Image src={this.state.image_url} size='medium' />
+         : null}
+        <Card.Content>
+         <Card.Header>{this.capitalize(this.props.tree.spc_common)}</Card.Header>
+         <Card.Meta>{this.capitalize(this.props.tree.spc_latin)}</Card.Meta>
+         <Card.Description>
+            <br/>
+            Nearest Address
+            <br/>
+            {this.props.tree.address}
+          </Card.Description>
+       </Card.Content>
+       <Card.Content extra>
+          <a>
+           <Icon name='heart'
+            color={this.props.tree.health === 'Poor' ? 'red' : 'green'}/>
+           Tree Health: {this.props.tree.health}
+           </a>
+         </Card.Content>
+         </Card>
     )
   }
 }
