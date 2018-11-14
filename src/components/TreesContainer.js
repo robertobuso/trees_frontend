@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Grid, Card, Label } from 'semantic-ui-react'
+import { Scrollbars } from 'react-custom-scrollbars';
 import Tree from './Tree'
 
 class TreesContainer extends Component {
@@ -18,6 +19,7 @@ class TreesContainer extends Component {
         <Label as='a' color='red' ribbon='right' floating>
           Scroll Down
         </Label>
+        <Scrollbars style={{ height: 550 }}>
         <Card.Group>
         {this.props.trees.map(tree =>
             <Tree
@@ -26,6 +28,7 @@ class TreesContainer extends Component {
               handleCardClick={this.props.handleCardClick}/>
         )}
         </Card.Group>
+        </Scrollbars>
         </Grid.Column>
       </Grid>
        </div>
