@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Image, Card, Icon } from 'semantic-ui-react'
+import { Image, Card, Icon, Modal, Header, Button } from 'semantic-ui-react'
 import {findImage, findWikiPage} from '../adapters/index.js'
 
 class Tree extends Component {
 
   state = {
     image_url: '',
-    wiki_url: ''
+    wiki_url: '',
+    details: false
   }
 
   componentDidMount() {
@@ -24,7 +25,7 @@ class Tree extends Component {
 
   setWikiPage = () => {
     findWikiPage(this.props.tree.spc_common)
-    .then( r => this.setState({ wiki_url: r[3][0]}), () => console.log(this.state.wiki_url))
+    .then( r => this.setState({ wiki_url: r[3][0]}))
   }
 
   capitalize = (string) => {
@@ -41,12 +42,21 @@ class Tree extends Component {
     }
   }
 
+  handleDoubleClick = () => {
+    this.setState({
+      details: !this.state.details
+    })
+  }
+
   render() {
+
+
 
     return(
       <Card centered
         key={this.props.tree.tree_id}
-        onClick={() => this.props.handleCardClick(this.props.tree.latitude, this.props.tree.longitude)}>
+        onClick={() => this.props.handleCardClick(this.props.tree.latitude, this.props.tree.longitude)}
+        onDoubleClick={this.handleDoubleClick}>
         {this.state.image_url ?
          <Image src={this.state.image_url} size='medium' />
          : null}
@@ -56,7 +66,6 @@ class Tree extends Component {
            {this.capitalize(this.props.tree.spc_common)}
            </a>
            </Card.Header>
-
          <Card.Meta>{this.capitalize(this.props.tree.spc_latin)}</Card.Meta>
          <Card.Description>
             <br/>
@@ -70,7 +79,24 @@ class Tree extends Component {
             color={this.props.tree.health === 'Poor' ? 'red' : 'green'}/>
            Tree Health: {this.props.tree.health}
          </Card.Content>
-         </Card>
+    <Modal trigger={<Button>Details</Button>}>
+       <Modal.Header>{this.capitalize(this.props.tree.spc_common)}</Modal.Header>
+       <Modal.Content image>
+         <Image wrapped size='medium' src={this.state.image_url} />
+         <Modal.Description>
+           <Header color='green'>
+           {this.capitalize(this.props.tree.spc_latin)}
+           </Header>
+           <p>Health: {this.props.tree.health}</p>
+           <p>Status: {this.props.tree.status}</p>
+           <p>Diameter: {this.props.tree.tree_dbh} cm.</p>
+           <p>Neighborhood: {this.props.tree.nta_name}</p>
+           <p>Problems: {this.props.tree.problems}</p>
+
+         </Modal.Description>
+      </Modal.Content>
+    </Modal>
+  </Card>
     )
   }
 }

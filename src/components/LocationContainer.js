@@ -56,7 +56,7 @@ class LocationContainer extends Component {
     return (
       <div>
       <Container text>
-        <Header as='h1'> A Tree Grows In... </Header>
+        <Header as='h1'> A Tree Grows In... {this.state.trees[1] ? this.state.trees[1].nta_name: null}</Header>
       </Container>
       <br/>
       <Grid columns={2} >
