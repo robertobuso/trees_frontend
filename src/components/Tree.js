@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Image, Card, Icon } from 'semantic-ui-react'
-import {findImage} from '../adapters/index.js'
+import {findImage, findWikiPage} from '../adapters/index.js'
 
 class Tree extends Component {
 
   state = {
-    image_url: ''
+    image_url: '',
+    wiki_url: ''
   }
 
   componentDidMount() {
@@ -17,11 +18,16 @@ class Tree extends Component {
     if (image.query.pages[0]['thumbnail']) {
     this.setState({
       image_url: image.query.pages[0]['thumbnail']['source']
-    })
+    }, () => this.setWikiPage())
     }
   }
 
-  capitalize(string) {
+  setWikiPage = () => {
+    findWikiPage(this.props.tree.spc_common)
+    .then( r => this.setState({ wiki_url: r[3][0]}), () => console.log(this.state.wiki_url))
+  }
+
+  capitalize = (string) => {
     try {
       if (string.indexOf(' ') !== -1) {
         const stringArr = string.split(' ')
@@ -45,7 +51,12 @@ class Tree extends Component {
          <Image src={this.state.image_url} size='medium' />
          : null}
         <Card.Content>
-         <Card.Header>{this.capitalize(this.props.tree.spc_common)}</Card.Header>
+         <Card.Header>
+           <a href={this.state.wiki_url}>
+           {this.capitalize(this.props.tree.spc_common)}
+           </a>
+           </Card.Header>
+
          <Card.Meta>{this.capitalize(this.props.tree.spc_latin)}</Card.Meta>
          <Card.Description>
             <br/>
