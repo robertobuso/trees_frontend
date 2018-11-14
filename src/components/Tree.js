@@ -52,7 +52,7 @@ class Tree extends Component {
          : null}
         <Card.Content>
          <Card.Header>
-           <a href={this.state.wiki_url}>
+           <a href={this.state.wiki_url}  target='_blank'>
            {this.capitalize(this.props.tree.spc_common)}
            </a>
            </Card.Header>
