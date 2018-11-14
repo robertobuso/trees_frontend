@@ -1,13 +1,8 @@
 import React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import TreeIcon from "../elements/tree.png";
 
 const MapContainer = withScriptjs(withGoogleMap((props) =>{
-
-  // const markers = props.doctors.map( doctor => <DoctorMarker
-  //                   key={doctor.uid}
-  //                   doctor={doctor}
-  //                   location={{lat: doctor.closestPractice.lat, lng: doctor.closestPractice.lon}}
-  //                 />);
 
   return (
       <GoogleMap
@@ -15,7 +10,8 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
         center={ { lat: props.lat, lng: props.lon} }
         >
         <Marker
-        position={ {lat: Number(props.markerLat), lng: Number(props.markerLon)} }
+        position={ {lat: Number(props.markerLat), lng: Number(props.markerLon)}}
+        icon={TreeIcon}
       />
       </GoogleMap>
     );

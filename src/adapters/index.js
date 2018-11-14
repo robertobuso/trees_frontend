@@ -10,6 +10,6 @@ export const findTrees = (lat, lon) => {
 
 export const findImage = (query) => {
   console.log('Query in findImage', query)
-    return  fetch(`https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&width=200&height=300&wbptterms=description&gpssearch=${query}&gpslimit=1`)
+    return  fetch(`https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&bptterms=description&gpssearch=${query}&gpslimit=1`)
     .then(r => r.json())
 }

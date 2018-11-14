@@ -36,7 +36,7 @@ class Tree extends Component {
   }
 
   render() {
-  
+
     return(
       <Card centered
         key={this.props.tree.tree_id}
@@ -55,11 +55,9 @@ class Tree extends Component {
           </Card.Description>
        </Card.Content>
        <Card.Content extra>
-          <a>
            <Icon name='heart'
             color={this.props.tree.health === 'Poor' ? 'red' : 'green'}/>
            Tree Health: {this.props.tree.health}
-           </a>
          </Card.Content>
          </Card>
     )
