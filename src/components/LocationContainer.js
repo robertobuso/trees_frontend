@@ -68,7 +68,7 @@ class LocationContainer extends Component {
           markerLat={this.state.markerLat}
           markerLon={this.state.markerLon}
           trees={this.state.trees}
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=REACT_APP_GOOGLE_API&v=3.exp&libraries=geometry,drawing,places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDhkn9ea3jg99u1BZqNrroIQ72C9c44HeM&v=3.exp&libraries=geometry,drawing,places`}
 				  loadingElement={<div style={{ height: `100%` }} />}
 				  containerElement={<div style={{ height: `600px`, width: `525px` }} />}
 				  mapElement={<div style={{ height: `90%` }} />}/>
