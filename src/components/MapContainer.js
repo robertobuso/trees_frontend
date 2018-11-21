@@ -14,7 +14,7 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
                 padding: 0 }}
       >
       <GoogleMap
-        defaultZoom={17}
+        defaultZoom={15}
         center={ { lat: props.lat, lng: props.lon} }
         >
         <Marker

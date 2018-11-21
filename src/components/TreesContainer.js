@@ -11,12 +11,10 @@ class TreesContainer extends Component {
       <>
         <Header as='h3'> There are {this.props.trees.length} trees near your block! </Header>
       <br/><br/>
-      <Grid style={{overflow: 'auto', maxHeight: 550, maxWidth: `100%`, padding: 10}}>
+      <Grid style={{overflow: 'auto', maxHeight:300, maxWidth: `100%`, padding: 10}}>
       <Label as='a' color='red' ribbon='right' floating>
         Scroll Down
       </Label>
-        <Scrollbars style={{ height: 550 }}>
-
         <Card.Group>
         {this.props.trees.map(tree =>
             <Tree
@@ -25,8 +23,6 @@ class TreesContainer extends Component {
               handleCardClick={this.props.handleCardClick}/>
         )}
         </Card.Group>
-
-        </Scrollbars>
         </Grid>
         </>
       )

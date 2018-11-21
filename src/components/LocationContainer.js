@@ -63,6 +63,13 @@ class LocationContainer extends Component {
         marginLeft: 0
       }}>
       <Grid.Column floated='left'>
+        <TreesContainer
+          lat={this.state.lat}
+          lon={this.state.lon}
+          trees={this.state.trees}
+          handleCardClick={this.handleCardClick}/>
+      </Grid.Column>
+      <Grid.Column floated='right'>
       <br/><br/><br/>
         <MapContainer
           lat={this.state.lat}
@@ -75,13 +82,7 @@ class LocationContainer extends Component {
 				  containerElement={<div style={{ height: `100%`, width: `100%` }} />}
 				  mapElement={<div style={{ height: `90%` }} />}/>
       </Grid.Column>
-      <Grid.Column floated='right'>
-        <TreesContainer
-          lat={this.state.lat}
-          lon={this.state.lon}
-          trees={this.state.trees}
-          handleCardClick={this.handleCardClick}/>
-      </Grid.Column>
+
       </Grid>
 
     </div>
