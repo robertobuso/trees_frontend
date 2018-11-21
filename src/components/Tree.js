@@ -7,7 +7,7 @@ class Tree extends Component {
   state = {
     image_url: '',
     wiki_url: '',
-    details: false
+    paragraph: ''
   }
 
   componentDidMount() {
@@ -25,7 +25,8 @@ class Tree extends Component {
 
   setWikiPage = () => {
     findWikiPage(this.props.tree.spc_common)
-    .then( r => this.setState({ wiki_url: r[3][0]}))
+    .then( r => this.setState({ wiki_url: r[3][0]})
+  )
   }
 
   capitalize = (string) => {
@@ -49,9 +50,6 @@ class Tree extends Component {
   }
 
   render() {
-
-
-
     return(
       <Card centered
         key={this.props.tree.tree_id}
@@ -62,7 +60,7 @@ class Tree extends Component {
          : null}
         <Card.Content>
          <Card.Header>
-           <a href={this.state.wiki_url}  target='_blank'>
+           <a href={this.state.wiki_url}  target='_blank' rel="noopener noreferrer">
            {this.capitalize(this.props.tree.spc_common)}
            </a>
            </Card.Header>
@@ -92,7 +90,6 @@ class Tree extends Component {
            <p>Diameter: {this.props.tree.tree_dbh} cm.</p>
            <p>Neighborhood: {this.props.tree.nta_name}</p>
            <p>Problems: {this.props.tree.problems}</p>
-
          </Modal.Description>
       </Modal.Content>
     </Modal>
