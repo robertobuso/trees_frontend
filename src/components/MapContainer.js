@@ -16,7 +16,7 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
       <GoogleMap
         defaultZoom={15}
         center={ { lat: props.lat, lng: props.lon} }
-        mapTypeControl={false}
+        defaultOptions={{mapTypeControl: false}}
         >
         <Marker
         position={ {lat: Number(props.markerLat), lng: Number(props.markerLon)}}

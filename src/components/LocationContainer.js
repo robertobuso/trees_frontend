@@ -60,8 +60,8 @@ class LocationContainer extends Component {
       <Grid stackable style={{
         width: "100%"
       }}>
-      <Grid.Column floated='left'>
-      
+      <Grid.Column>
+
         <MapContainer
           lat={this.state.lat}
           lon={this.state.lon}
@@ -74,7 +74,7 @@ class LocationContainer extends Component {
 				  mapElement={<div style={{ height: `90%` }} />}/>
       </Grid.Column>
 
-      <Grid.Column floated='right'>
+      <Grid.Column>
         <TreesContainer
           lat={this.state.lat}
           lon={this.state.lon}
