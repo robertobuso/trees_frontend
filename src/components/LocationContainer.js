@@ -58,7 +58,7 @@ class LocationContainer extends Component {
         <Header as='h1'> A Tree Grows In... {this.state.trees[1] ? this.state.trees[1].nta_name: null}</Header>
       </Container>
       <br/>
-      <Grid stackable columns={2} style={{
+      <Grid doubling columns={2} style={{
         width: "100%",
         marginLeft: 0
       }}>
