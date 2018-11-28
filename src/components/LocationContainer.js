@@ -54,23 +54,14 @@ class LocationContainer extends Component {
   render() {
     return (
       <div>
-      <Container fluid text>
-        <Header as='h1'> A Tree Grows In... {this.state.trees[1] ? this.state.trees[1].nta_name: null}</Header>
-      </Container>
-      <br/>
-      <Grid doubling columns={2} style={{
-        width: "100%",
-        marginLeft: 0
+        <Header as='h2'> A Tree Grows In... {this.state.trees[1] ?
+          this.state.trees[1].nta_name.includes ('Village') ? ' the ' + this.state.trees[1].nta_name : this.state.trees[1].nta_name : null}
+          </Header>
+      <Grid stackable style={{
+        width: "100%"
       }}>
       <Grid.Column floated='left'>
-        <TreesContainer
-          lat={this.state.lat}
-          lon={this.state.lon}
-          trees={this.state.trees}
-          handleCardClick={this.handleCardClick}/>
-      </Grid.Column>
-      <Grid.Column floated='right'>
-      <br/><br/><br/>
+      
         <MapContainer
           lat={this.state.lat}
           lon={this.state.lon}
@@ -83,8 +74,14 @@ class LocationContainer extends Component {
 				  mapElement={<div style={{ height: `90%` }} />}/>
       </Grid.Column>
 
+      <Grid.Column floated='right'>
+        <TreesContainer
+          lat={this.state.lat}
+          lon={this.state.lon}
+          trees={this.state.trees}
+          handleCardClick={this.handleCardClick}/>
+      </Grid.Column>
       </Grid>
-
     </div>
     )
   }

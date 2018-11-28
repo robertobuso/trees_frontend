@@ -10,7 +10,7 @@ class TreesContainer extends Component {
     return (
       <>
         <Header as='h3'> There are {this.props.trees.length} trees near your block! </Header>
-      <br/><br/>
+
       <Grid style={{overflow: 'auto', maxHeight:300, maxWidth: `100%`, padding: 10}}>
       <Label as='a' color='red' ribbon='right' floating>
         Scroll Down

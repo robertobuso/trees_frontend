@@ -6,16 +6,17 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
 
   return (
     <div
-       style={{ height: 350,
-                width: '100%',
+       style={{ height: 275,
+                width: '95%',
                 display: 'flex',
-                flexFlow: 'row nowrap',
+                flexFlow: 'column wrap',
                 justifyContent: 'center',
                 padding: 0 }}
       >
       <GoogleMap
         defaultZoom={15}
         center={ { lat: props.lat, lng: props.lon} }
+        mapTypeControl={false}
         >
         <Marker
         position={ {lat: Number(props.markerLat), lng: Number(props.markerLon)}}
