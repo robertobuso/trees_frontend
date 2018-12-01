@@ -14,14 +14,22 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
                 padding: 0 }}
       >
       <GoogleMap
-        defaultZoom={15}
+        defaultZoom={17}
         center={ { lat: props.lat, lng: props.lon} }
         defaultOptions={{mapTypeControl: false}}
         >
+        {props.trees.map(tree =>
+          <Marker
+          position={ {lat: Number(tree.latitude), lng: Number(tree.longitude)}}
+          icon={TreeIcon}
+          key={tree.tree_id}
+        />
+
+        )}
         <Marker
-        position={ {lat: Number(props.markerLat), lng: Number(props.markerLon)}}
-        icon={TreeIcon}
-      />
+        position={ {lat: props.lat, lng: props.lon} }
+        />
+
       </GoogleMap>
       </div>
     );

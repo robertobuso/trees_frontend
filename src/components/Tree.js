@@ -43,18 +43,11 @@ class Tree extends Component {
     }
   }
 
-  handleDoubleClick = () => {
-    this.setState({
-      details: !this.state.details
-    })
-  }
-
   render() {
     return(
       <Card centered
         key={this.props.tree.tree_id}
-        onClick={() => this.props.handleCardClick(this.props.tree.latitude, this.props.tree.longitude)}
-        onDoubleClick={this.handleDoubleClick}>
+      >
         {this.state.image_url ?
          <Image src={this.state.image_url} size='medium' />
          : null}
