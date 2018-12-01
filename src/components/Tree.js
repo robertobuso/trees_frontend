@@ -48,6 +48,22 @@ class Tree extends Component {
       <Card centered
         key={this.props.tree.tree_id}
       >
+      <Modal trigger={<Button>Details</Button>}>
+         <Modal.Header>{this.capitalize(this.props.tree.spc_common)}</Modal.Header>
+         <Modal.Content image>
+           <Image wrapped size='medium' src={this.state.image_url} />
+           <Modal.Description>
+             <Header color='green'>
+             {this.capitalize(this.props.tree.spc_latin)}
+             </Header>
+             <p>Health: {this.props.tree.health}</p>
+             <p>Status: {this.props.tree.status}</p>
+             <p>Diameter: {this.props.tree.tree_dbh} cm.</p>
+             <p>Neighborhood: {this.props.tree.nta_name}</p>
+             <p>Problems: {this.props.tree.problems}</p>
+           </Modal.Description>
+        </Modal.Content>
+      </Modal>
         {this.state.image_url ?
          <Image src={this.state.image_url} size='medium' />
          : null}
@@ -70,22 +86,6 @@ class Tree extends Component {
             color={this.props.tree.health === 'Poor' ? 'red' : 'green'}/>
            Tree Health: {this.props.tree.health}
          </Card.Content>
-    <Modal trigger={<Button>Details</Button>}>
-       <Modal.Header>{this.capitalize(this.props.tree.spc_common)}</Modal.Header>
-       <Modal.Content image>
-         <Image wrapped size='medium' src={this.state.image_url} />
-         <Modal.Description>
-           <Header color='green'>
-           {this.capitalize(this.props.tree.spc_latin)}
-           </Header>
-           <p>Health: {this.props.tree.health}</p>
-           <p>Status: {this.props.tree.status}</p>
-           <p>Diameter: {this.props.tree.tree_dbh} cm.</p>
-           <p>Neighborhood: {this.props.tree.nta_name}</p>
-           <p>Problems: {this.props.tree.problems}</p>
-         </Modal.Description>
-      </Modal.Content>
-    </Modal>
   </Card>
     )
   }
