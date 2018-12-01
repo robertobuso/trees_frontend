@@ -30,6 +30,7 @@ class Tree extends Component {
   }
 
   capitalize = (string) => {
+    if (string) {
     try {
       if (string.indexOf(' ') !== -1) {
         const stringArr = string.split(' ')
@@ -41,6 +42,7 @@ class Tree extends Component {
     catch(error) {
       console.error('Error', error);
     }
+  }
   }
 
   render() {

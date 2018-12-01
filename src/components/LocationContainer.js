@@ -44,6 +44,10 @@ class LocationContainer extends Component {
     })
   }
 
+  handleClick = (id) => {
+    console.log('The id is ', id)
+  }
+
   render() {
     return (
       <>
@@ -67,6 +71,7 @@ class LocationContainer extends Component {
   				  loadingElement={<div style={{ height: `100%` }} />}
   				  containerElement={<div style={{ height: `100%`, width: `100%` }} />}
   				  mapElement={<div style={{ height: `90%` }} />}
+            handleClick={this.handleClick}
           />
         </Grid.Column>
 

@@ -23,6 +23,7 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
           position={ {lat: Number(tree.latitude), lng: Number(tree.longitude)}}
           icon={TreeIcon}
           key={tree.tree_id}
+          onClick={() => props.handleClick(tree.tree_id)}
         />
 
         )}
