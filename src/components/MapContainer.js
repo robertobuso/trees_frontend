@@ -15,7 +15,7 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
       >
       <GoogleMap
         defaultZoom={17}
-        center={ { lat: props.lat, lng: props.lon} }
+        center={ { lat: props.lat + .0005, lng: props.lon} }
         defaultOptions={{mapTypeControl: false}}
         >
         {props.trees.map(tree =>
