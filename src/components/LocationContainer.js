@@ -88,7 +88,7 @@ class LocationContainer extends Component {
           </Header.Subheader>
         </Header>
         <br/>
-        <Grid stackable columns={2}>
+        <Grid stackable columns={2} style={ {margin: 1}}>
         <Grid.Column>
           <MapContainer
             trees={this.state.trees}

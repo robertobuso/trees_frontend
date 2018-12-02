@@ -14,7 +14,7 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
                 padding: 0 }}
       >
       <GoogleMap
-        defaultZoom={18}
+        defaultZoom={18.5}
         center={ { lat: props.lat, lng: props.lon} }
         defaultOptions={{mapTypeControl: false}}
         >
