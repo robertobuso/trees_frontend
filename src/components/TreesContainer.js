@@ -22,9 +22,13 @@ class TreesContainer extends Component {
 
   render() {
     return(
+      Object.keys(this.props.tree).length > 0 ?
       <Grid columns={2}>
       <Grid.Column>
+      <a href={this.props.wiki_url}  target='_blank' rel="noopener noreferrer">
       <Image size='medium' src={this.props.image_url} />
+      <p style={{textAlign: 'center'}}>click for more details</p>
+      </a>
       </Grid.Column>
       <Grid.Column>
       <Item>
@@ -33,12 +37,7 @@ class TreesContainer extends Component {
        </a>
        </Header>
        <Item.Content verticalAlign='middle'>
-
-
             <Item.Description>
-             <Item.Header color='red'>
-
-             </Item.Header>
              <p>Latin Species Name: {this.capitalize(this.props.tree.spc_latin)}</p>
              <p>Nearest Address: {this.props.tree.address}</p>
              <p>Status: {this.props.tree.status}</p>
@@ -53,6 +52,7 @@ class TreesContainer extends Component {
   </Item>
   </Grid.Column>
   </Grid>
+  : <Header as='h3' textAlign='center'>Click on any tree for information.</Header>
     )
   }
 }
