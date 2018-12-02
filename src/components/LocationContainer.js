@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TreesContainer from './TreesContainer'
 import MapContainer from './MapContainer'
-import {findTrees, findImage} from '../adapters/index.js'
+import {findTrees, findImage, findWikiPage} from '../adapters/index.js'
 import { Header, Grid } from 'semantic-ui-react'
 require('dotenv').config()
 
@@ -13,7 +13,11 @@ class LocationContainer extends Component {
     lon: 0,
     trees: [],
     markerLat: 0,
-    markerLon: 0
+    markerLon: 0,
+    clickedTree: {},
+    image_url: '',
+    wiki_url: '',
+    paragraph: ''
   }
 
   componentDidMount() {
@@ -44,8 +48,31 @@ class LocationContainer extends Component {
     })
   }
 
-  handleClick = (id) => {
-    console.log('The id is ', id)
+  handleClick = (tree) => {
+    this.setState({
+      clickedTree: tree
+    }, () => this.getImage(this.state.clickedTree.spc_common))
+
+  }
+
+  getImage = (species) => {
+    console.log(species)
+     findImage(species)
+    .then(image => this.setImage(image))
+  }
+
+  setImage = (image) => {
+    if (image.query.pages[0]['thumbnail']) {
+    this.setState({
+      image_url: image.query.pages[0]['thumbnail']['source']
+    }, () => this.setWikiPage())
+    }
+  }
+
+  setWikiPage = () => {
+    findWikiPage(this.state.clickedTree.spc_common)
+    .then( r => this.setState({ wiki_url: r[3][0]})
+  )
   }
 
   render() {
@@ -77,10 +104,11 @@ class LocationContainer extends Component {
 
         <Grid.Column>
           <TreesContainer
-            trees={this.state.trees}
+            tree={this.state.clickedTree}
+            image_url={this.state.image_url}
+            wiki_url={this.state.wiki_url}
           />
         </Grid.Column>
-
       </Grid>
     </>
     )
