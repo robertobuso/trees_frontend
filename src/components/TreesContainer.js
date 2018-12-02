@@ -6,12 +6,8 @@ class TreesContainer extends Component {
   render() {
     return (
       <>
-        <Header as='h3'>
-          There are {this.props.trees.length} trees near your block!
-        </Header>
-
-        <Grid style={{overflow: 'auto', maxHeight:300, maxWidth: `100%`, padding: 10}}>
-          <Label as='a' color='red' ribbon='right' floating>
+        <Grid style={{overflow: 'auto', maxHeight:700, width: `100%`, padding: 10}}>
+          <Label as='a' color='red' ribbon='center'>
             Scroll Down
           </Label>
           <Card.Group>
@@ -19,7 +15,7 @@ class TreesContainer extends Component {
               <Tree
                 tree={tree}
                 key={tree.tree_id}
-              />
+                />
             )}
           </Card.Group>
         </Grid>

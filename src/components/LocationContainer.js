@@ -51,17 +51,17 @@ class LocationContainer extends Component {
   render() {
     return (
       <>
-        <Header as='h2'>
-          A Tree Grows In... {this.state.trees[1] ?
+        <Header as='h2' textAlign='center'>
+          A Tree Grows in... {this.state.trees[1] ?
           this.state.trees[1].nta_name.includes ('Village') ? ' the ' + this.state.trees[1].nta_name
           :
           this.state.trees[1].nta_name : null}
+        <Header.Subheader as='h3'>
+          There are {this.state.trees.length} trees near your block!
+          </Header.Subheader>
         </Header>
-
-        <Grid stackable style={{
-        width: "100%"
-        }}>
-
+        <br/>
+        <Grid stackable columns={2}>
         <Grid.Column>
           <MapContainer
             trees={this.state.trees}
