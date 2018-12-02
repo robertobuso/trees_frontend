@@ -49,8 +49,8 @@ class LocationContainer extends Component {
   handleClick = (tree) => {
     this.setState({
       clickedTree: tree,
-      lat: tree.latitude,
-      lon: tree.longitude
+      lat: Number(tree.latitude),
+      lon: Number(tree.longitude)
     }, () => this.getImage(this.state.clickedTree.spc_common))
 
   }
