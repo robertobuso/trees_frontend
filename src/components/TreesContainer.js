@@ -26,8 +26,8 @@ class TreesContainer extends Component {
       <Grid columns={2}>
       <Grid.Column>
       <a href={this.props.wiki_url}  target='_blank' rel="noopener noreferrer">
-      <Image size='medium' src={this.props.image_url} />
       <p style={{textAlign: 'center'}}>click for more details</p>
+      <Image size='medium' src={this.props.image_url} />
       </a>
       </Grid.Column>
       <Grid.Column>
