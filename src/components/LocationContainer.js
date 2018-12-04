@@ -9,6 +9,8 @@ require('dotenv').config()
 class LocationContainer extends Component {
 
   state = {
+    userLat: 0,
+    userLon: 0,
     lat: 0,
     lon: 0,
     trees: [],
@@ -38,9 +40,9 @@ class LocationContainer extends Component {
   }
 
    showPosition = (position) => {
-      this.setState({ lat: position.coords.latitude, lon: position.coords.longitude
+      this.setState({ userLat: position.coords.latitude, userLon: position.coords.longitude
       }, () => {
-        findTrees(this.state.lat, this.state.lon)
+        findTrees(this.state.userLat, this.state.userLon)
         .then(trees => this.setTrees(trees))
       })
   }
@@ -99,6 +101,8 @@ class LocationContainer extends Component {
             trees={this.state.trees}
             lat={this.state.lat}
             lon={this.state.lon}
+            userLat={this.state.userLat}
+            userLon={this.state.userLon}
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyDhkn9ea3jg99u1BZqNrroIQ72C9c44HeM&v=3.exp&libraries=geometry,drawing,places`}
   				  loadingElement={<div style={{ height: `100%` }} />}
   				  containerElement={<div style={{ height: `100%`, width: `100%` }} />}

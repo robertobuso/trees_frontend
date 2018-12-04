@@ -1,6 +1,7 @@
 import React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import TreeIcon from "../elements/tree.png";
+import UserIcon from "../elements/profile.png";
 
 const MapContainer = withScriptjs(withGoogleMap((props) =>{
 
@@ -15,7 +16,7 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
       >
       <GoogleMap
         defaultZoom={18.5}
-        center={ { lat: props.lat, lng: props.lon} }
+        center={ props.lat === 0 ? { lat: props.userLat, lng: props.userLon} : { lat: props.lat, lng: props.lon} }
         defaultOptions={{mapTypeControl: false}}
         >
         {props.trees.map(tree =>
@@ -29,6 +30,11 @@ const MapContainer = withScriptjs(withGoogleMap((props) =>{
         )}
         <Marker
         position={ {lat: props.lat, lng: props.lon} }
+        />
+
+        <Marker
+        position={ {lat: props.userLat, lng: props.userLon} }
+        icon={UserIcon}
         />
 
       </GoogleMap>
