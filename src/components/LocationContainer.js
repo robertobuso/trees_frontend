@@ -26,7 +26,7 @@ class LocationContainer extends Component {
  getLocation = () => {
    const geolocation = navigator.geolocation
       if (geolocation) {
-         geolocation.getCurrentPosition((position) => this.showPosition(position))
+         geolocation.getCurrentPosition((position) => this.showPosition(position), this.errorFunction)
       } else {
           alert("Geolocation is not supported by this browser.")
       }
@@ -39,6 +39,11 @@ class LocationContainer extends Component {
         .then(trees => this.setTrees(trees))
       })
   }
+
+    errorFunction = () => {
+      console.log("Geolocation error caught.")
+      alert("Unable to retrieve your location.")
+    }
 
   setTrees = (trees) => {
     this.setState({
