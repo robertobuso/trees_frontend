@@ -1,7 +1,7 @@
 import React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import TreeIcon from "../elements/tree.png";
-import UserIcon from "../elements/profile.png";
+import UserIcon from "../elements/full-moon.png";
 
 const MapContainer = withScriptjs(withGoogleMap((props) =>{
 
