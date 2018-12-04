@@ -32,6 +32,11 @@ class LocationContainer extends Component {
       }
   }
 
+  errorFunction = () => {
+    console.log("Geolocation error caught.")
+    alert("Unable to retrieve your location. Please check your browser's location settings.")
+  }
+
    showPosition = (position) => {
       this.setState({ lat: position.coords.latitude, lon: position.coords.longitude
       }, () => {
@@ -39,11 +44,6 @@ class LocationContainer extends Component {
         .then(trees => this.setTrees(trees))
       })
   }
-
-    errorFunction = () => {
-      console.log("Geolocation error caught.")
-      alert("Unable to retrieve your location.")
-    }
 
   setTrees = (trees) => {
     this.setState({
