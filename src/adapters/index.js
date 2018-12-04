@@ -1,8 +1,8 @@
 export const findTrees = (lat, lon) => {
-  const newLat = lat + .001
-  const newLon = lon - .001
-  const newLonTwo = lon + .001
-  const newLatTwo = lat - .001
+  const newLat = lat + .002
+  const newLon = lon - .002
+  const newLonTwo = lon + .002
+  const newLatTwo = lat - .002
 
   if (lat) {
     return fetch(`https://data.cityofnewyork.us/resource/nwxe-4ae8.json?$where=latitude >= ${newLatTwo} AND latitude <= ${newLat} AND longitude >= ${newLon} AND longitude <= ${newLonTwo}`)

@@ -26,7 +26,7 @@ class TreesContainer extends Component {
       <Grid columns={2}>
       <Grid.Column>
       <a href={this.props.wiki_url}  target='_blank' rel="noopener noreferrer">
-      <p style={{textAlign: 'center'}}>click for more details</p>
+      <p style={{textAlign: 'center'}}>click here for more details</p>
       <Image size='medium' src={this.props.image_url} />
       </a>
       </Grid.Column>
@@ -37,19 +37,19 @@ class TreesContainer extends Component {
        </a>
        </Header>
        <Item.Content verticalAlign='middle'>
-            <Item.Description>
-             <p>Latin Species Name: {this.capitalize(this.props.tree.spc_latin)}</p>
-             <p>Nearest Address: {this.props.tree.address}</p>
-             <p>Status: {this.props.tree.status}</p>
-             <p>Diameter: {this.props.tree.tree_dbh} cm.</p>
-             <p>Neighborhood: {this.props.tree.nta_name}</p>
-             <p>Problems: {this.props.tree.problems}</p>
-             <Icon name='heart'
-              color={this.props.tree.health === 'Poor' ? 'red' : 'green'}/>
-             Tree Health: {this.props.tree.health}
-           </Item.Description>
-             </Item.Content>
-  </Item>
+        <Item.Description>
+         <p>Latin Species Name: {this.capitalize(this.props.tree.spc_latin)}</p>
+         <p>Nearest Address: {this.props.tree.address}</p>
+         <p>Status: {this.props.tree.status}</p>
+         <p>Diameter: {this.props.tree.tree_dbh} cm.</p>
+         <p>Neighborhood: {this.props.tree.nta_name}</p>
+         <p>Problems: {this.props.tree.problems}</p>
+         <Icon name='heart'
+          color={this.props.tree.health === 'Poor' ? 'red' : 'green'}/>
+         Tree Health: {this.props.tree.health}
+       </Item.Description>
+      </Item.Content>
+    </Item>
   </Grid.Column>
   </Grid>
   : <Header as='h3' textAlign='center'>Click on any tree for information.</Header>
