@@ -27,6 +27,7 @@ class LocationContainer extends Component {
 
  getLocation = () => {
    const geolocation = navigator.geolocation
+   console.log("Geolocation: ", geolocation)
       if (geolocation) {
          geolocation.getCurrentPosition((position) => this.showPosition(position), this.errorFunction)
       } else {
@@ -36,15 +37,30 @@ class LocationContainer extends Component {
 
   errorFunction = () => {
     console.log("Geolocation error caught.")
-    alert("Unable to retrieve your location. Please check your browser's location settings.")
+    this.setState({ userLat: 40.7341349, userLon: -73.9971399
+    }, () => {
+      findTrees(this.state.userLat, this.state.userLon)
+      .then(trees => this.setTrees(trees))
+    })
+    alert("Unable to retrieve your location: please check your location settings. Meanwhile, check out this beautiful block in the Village.")
   }
 
    showPosition = (position) => {
+
+     if (position.coords.latitude === 0) {
+       console.log('Im in error!')
+       this.setState({ userLat: 40.7341349, userLon: -73.9971399
+       }, () => {
+         findTrees(this.state.userLat, this.state.userLon)
+         .then(trees => this.setTrees(trees))
+       })
+     } else {
       this.setState({ userLat: position.coords.latitude, userLon: position.coords.longitude
       }, () => {
         findTrees(this.state.userLat, this.state.userLon)
         .then(trees => this.setTrees(trees))
       })
+    }
   }
 
   setTrees = (trees) => {
@@ -83,6 +99,8 @@ class LocationContainer extends Component {
   }
 
   render() {
+    console.log('Lat: ', this.state.userLat)
+    console.log('Lon: ', this.state.userLon)
     return (
       <>
         <Header as='h2' textAlign='center'>
