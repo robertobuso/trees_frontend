@@ -42,11 +42,10 @@ class LocationContainer extends Component {
       findTrees(this.state.userLat, this.state.userLon)
       .then(trees => this.setTrees(trees))
     })
-    alert("Unable to retrieve your location: please check your location settings. Meanwhile, check out this beautiful block in the Village.")
+    alert("Seems like you're out of the city. If you're in NYC, please check your location settings. Meanwhile, enjoy this beautiful block in the Village.")
   }
 
    showPosition = (position) => {
-
      if (position.coords.latitude === 0) {
        console.log('Im in error!')
        this.setState({ userLat: 40.7341349, userLon: -73.9971399
@@ -64,9 +63,13 @@ class LocationContainer extends Component {
   }
 
   setTrees = (trees) => {
+    if(trees.length===0) {
+      return this.errorFunction()
+    } else {
     this.setState({
       trees: trees
     })
+  }
   }
 
   handleClick = (tree) => {
